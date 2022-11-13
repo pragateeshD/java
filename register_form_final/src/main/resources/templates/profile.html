@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http:www.thymeLeaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<style>
+    .container{
+        text-align:center;
+        padding: 50px 50px 50px 50px;
+        border: 2px solid black;
+        margin-left: 400px;
+        margin-right: 400px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 10px 10px 10px 10px rgb(80, 93, 97);
+        
+    }
+    span{
+        padding: 10px 10px 10px 10px;
+        font-weight: bold;
+        
+    }
+    body{
+        background-color: grey;
+    }
+</style>
+</head>
+
+
+<body>
+    <h1 style="text-align: center;">Account Info</h1>
+    <hr><br><br>
+<div class="container">
+    
+    
+<span>Name : </span>
+<span th:text="${user.name}"></span><br> <br><br>
+<span>Email : </span>
+<span th:text="${user.email}"></span><br><br><br>
+<span>Date of Birth : </span>
+<span th:text="${user.birth_date}"></span><br><br><br>
+
+<span>Profession : </span>
+<span th:text="${user.profession}"></span><br><br><br>
+
+<span>Maritial Status : </span>
+<span th:text="${user.married}"></span><br><br><br>
+<span>Gender : </span>
+<span th:text="${user.gender}"></span><br>
+
+
+</div>
+</body>
+</html>

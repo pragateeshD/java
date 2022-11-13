@@ -1,0 +1,121 @@
+start docker
+--------------------------
+
+right click run as -> maven install
+
+(wait for build success)
+
+rigth click -> new -> file  (file name == Dockerfile)
+
+
+
+From openjdk:8
+ADD target/*.jar secapp.jar
+ENTRYPOINT ["java","-jar","secapp.jar"]
+
+
+paste the above content in Dockerfile
+
+
+-----------------------------------------
+
+go to cmd
+
+------
+(create image)
+
+-> docker build -t aravinth .
+
+(wait for build time)
+
+(check for created docker image)
+
+-> docker images
+
+->docker run -p 8082:8080 aravinth
+
+
+
+
+
+
+
+
+
+
+
+
+-----------------------------------------------------
+sample test cmd
+-----------------------------------------------------
+
+
+Microsoft Windows [Version 10.0.22621.675]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\aravi\Documents\java\register_form_final\register_form_final>docker build -t aravinth .
+[+] Building 181.4s (7/7) FINISHED
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 122B                                                                               0.0s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [internal] load metadata for docker.io/library/openjdk:19                                                      5.8s
+ => [internal] load build context                                                                                  0.2s
+ => => transferring context: 19.15MB                                                                               0.2s
+ => [1/2] FROM docker.io/library/openjdk:19@sha256:4123be55fd6853980020c59e7530d017ea08996abbe71741a51c62f7b758  174.9s
+ => => resolve docker.io/library/openjdk:19@sha256:4123be55fd6853980020c59e7530d017ea08996abbe71741a51c62f7b7586b  0.0s
+ => => sha256:4123be55fd6853980020c59e7530d017ea08996abbe71741a51c62f7b7586bee 1.04kB / 1.04kB                     0.0s
+ => => sha256:973fe414a4e1f3e41e291b068183684a88827dd2cb5f78214da26632d5218702 954B / 954B                         0.0s
+ => => sha256:2e6f6690e479ce4ad3600d1b87ff79ea5dc6438165902f332ab7f721f7599c6b 4.42kB / 4.42kB                     0.0s
+ => => sha256:051f419db9dd9462e8995886d24f592c26cef792cc915dfbc7548e0b19aa55fe 40.59MB / 40.59MB                 167.2s
+ => => sha256:aa51c6010a14c1984cbdea1332a5d2f77bf6e0141bc497b44dca611e21f9b391 12.23MB / 12.23MB                  48.1s
+ => => sha256:dba785fff917fb7bc8692503ac810691754ab0f6e0cdfbf4941b0de2305ab652 196.18MB / 196.18MB               159.2s
+ => => extracting sha256:051f419db9dd9462e8995886d24f592c26cef792cc915dfbc7548e0b19aa55fe                          1.7s
+ => => extracting sha256:aa51c6010a14c1984cbdea1332a5d2f77bf6e0141bc497b44dca611e21f9b391                          0.6s
+ => => extracting sha256:dba785fff917fb7bc8692503ac810691754ab0f6e0cdfbf4941b0de2305ab652                          4.7s
+ => [2/2] ADD target/*.jar secapp.jar                                                                              0.3s
+ => exporting to image                                                                                             0.2s
+ => => exporting layers                                                                                            0.1s
+ => => writing image sha256:c80b4861ee4197ac3957cfa25943d4c2986fc5f9267ddb4a7d6e8383e636bc21                       0.0s
+ => => naming to docker.io/library/aravinth                                                                        0.0s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+
+C:\Users\aravi\Documents\java\register_form_final\register_form_final>docker images
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+aravinth     latest    c80b4861ee41   49 seconds ago   498MB
+arv          latest    15790f9cd2e1   16 hours ago     545MB
+
+C:\Users\aravi\Documents\java\register_form_final\register_form_final>docker run -p 8082:8080 aravinth
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.7.3)
+
+2022-11-13 08:08:48.429  INFO 1 --- [           main] c.r.thyme.RegisterFormApplication        : Starting RegisterFormApplication v0.0.1-SNAPSHOT using Java 19 on 8581b0f762a2 with PID 1 (/secapp.jar started by root in /)
+2022-11-13 08:08:48.433  INFO 1 --- [           main] c.r.thyme.RegisterFormApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-11-13 08:08:49.816  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-11-13 08:08:49.837  INFO 1 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-11-13 08:08:49.838  INFO 1 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-11-13 08:08:50.003  INFO 1 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-11-13 08:08:50.004  INFO 1 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1483 ms
+2022-11-13 08:08:50.305  INFO 1 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-11-13 08:08:50.514  INFO 1 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-11-13 08:08:50.526  INFO 1 --- [           main] c.r.thyme.RegisterFormApplication        : Started RegisterFormApplication in 2.602 seconds (JVM running for 3.09)
+2022-11-13 08:09:35.832  INFO 1 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-11-13 08:09:35.832  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-11-13 08:09:35.834  INFO 1 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+
+
+
+
+
+
+
+
+
+
